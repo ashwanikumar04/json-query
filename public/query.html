@@ -2,21 +2,33 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div ui-ace="{ useWrapMode : true,
+        <div class="text-right col-md-12">
+            <i class='fa fa-2x fa-wifi pointer' title="Fetch from internet"></i>
+        </div>
+        <div class="col-md-12">
+            <div ui-ace="{ useWrapMode : true,
             theme:'terminal',
             mode: 'javascript',
-            firstLineNumber: 1}" id="leftEditor"></div>
+            firstLineNumber: 1}" ng-model="leftEditor"></div>
+        </div>
     </div>
     <div class="col-md-6">
-        <div ui-ace="{ useWrapMode : true,
+        <div class="text-right col-md-12">
+            <i class='fa fa-2x fa-save pointer' title="Save locally" ng-click=""></i>
+            <i class='fa fa-2x fa-github pointer' title="Save as gist" ng-click="generateGist()"></i>
+        </div>
+        <div class="col-md-12">
+            <div ui-ace="{ useWrapMode : true,
             theme:'terminal',
             mode: 'javascript',
-            firstLineNumber: 1}" id="rightEditor"></div>
+            firstLineNumber: 1}" ng-model="rightEditor"></div>
+        </div>
+
     </div>
     <div class="col-md-12 margin-top-10">
         <div ui-ace="{ useWrapMode : true,
             theme:'terminal',
             mode: 'javascript',
-            firstLineNumber: 1}" id="resultEditor"></div>
+            firstLineNumber: 1}" ng-model="resultEditor"></div>
     </div>
 </div>

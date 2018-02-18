@@ -2,22 +2,10 @@
     function JsonQueryController($scope, $location, $rootScope, $interval, jsonQueryService, Flash, ngDialog) {
         $rootScope.$emit("onTabChanged", 8);
         $scope.gistUrl = "";
-        $scope.gistText = "";
+        $scope.rightEditor = "hello";
         $scope.generateGist = function () {
-            $scope.revenue = {};
-            $scope.apiData = {};
-            $scope.visible = false;
-
-            // if (_.isEmpty($scope.gistText)) {
-            //     Flash.create('danger', "Please enter text", 'custom-class');
-            //     return;
-            // }
-
-            var editor = ace.edit("editor");
-            editor.setTheme("ace/theme/monokai");
-            editor.session.setMode("ace/mode/javascript");
             jsonQueryService
-                .generateGist($scope.gistText)
+                .generateGist($scope.rightEditor)
                 .then(function (response) {
                     var apiData = response.data.data;
                     console.log(apiData);
