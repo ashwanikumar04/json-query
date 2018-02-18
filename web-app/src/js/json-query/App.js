@@ -9,7 +9,8 @@
             'ngAnimate',
             "flash",
             'ngDialog',
-            "LocalStorageModule"
+            "LocalStorageModule",
+            'ui.ace'
         ])
         .config(config)
         .run(run);
@@ -31,7 +32,7 @@
         $routeProvider
             .when("/", {
                 controller: 'JsonQueryController',
-                templateUrl: 'tools.html',
+                templateUrl: 'query.html',
             });
     }
 

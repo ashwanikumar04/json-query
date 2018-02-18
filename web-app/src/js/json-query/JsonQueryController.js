@@ -12,6 +12,10 @@
             //     Flash.create('danger', "Please enter text", 'custom-class');
             //     return;
             // }
+
+            var editor = ace.edit("editor");
+            editor.setTheme("ace/theme/monokai");
+            editor.session.setMode("ace/mode/javascript");
             jsonQueryService
                 .generateGist($scope.gistText)
                 .then(function (response) {
