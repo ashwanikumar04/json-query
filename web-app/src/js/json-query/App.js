@@ -10,7 +10,8 @@
             "flash",
             'ngDialog',
             "LocalStorageModule",
-            'ui.ace'
+            'ui.ace',
+            'angularLoad'
         ])
         .config(config)
         .run(run);
@@ -38,6 +39,5 @@
 
     run.$inject = ['$rootScope', '$location', '$http', "localStorageService"];
 
-    function run($rootScope, $location, $http, localStorageService) {
-    }
+    function run($rootScope, $location, $http, localStorageService) {}
 }());
