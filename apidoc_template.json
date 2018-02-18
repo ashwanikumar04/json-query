@@ -1,0 +1,11 @@
+{
+    "name": "Node Starter",
+    "version": "0.1.0",
+    "description": "Node Starter API",
+    "title": "Node Starter",
+    "url": "{serverURL}api",
+    "sampleUrl": "{serverURL}api",
+    "order": [
+        
+    ]
+}

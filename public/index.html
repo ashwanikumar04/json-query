@@ -1,0 +1,69 @@
+<html lang="en" ng-app="jsonQuery">
+<!--<![endif]-->
+
+<head>
+    <meta charset="UTF-8">
+    <title>Json Query</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.css' type='text/css'
+        media='all' />
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="/css/json-query.css?t=1518965428392">
+    <!--[if lt IE 9]>
+                        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+                        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+                    <![endif]-->
+    <style>
+        .DocumentList {
+            overflow-x: scroll;
+            overflow-y: hidden;
+            height: 175px;
+            width: 100%;
+            padding: 0 10px;
+        }
+
+        .DocumentItem {
+            border: 1px solid black;
+            padding: 0;
+            height: 175px;
+        }
+
+        .list-inline {
+            white-space: nowrap;
+        }
+
+        .pointer {
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 class="text-info bg-primary text-center">Json Query</h1>
+    <div class="container">
+        <div class="row">
+            <div ng-controller="MainController">
+            </div>
+            <div flash-message="5000"></div>
+            <div class="title">
+                <div id="loadingContainer"></div>
+            </div>
+            <div ng-view></div>
+            <div style="margin-bottom: 20px;padding-bottom: 20px"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://use.fontawesome.com/ce7654fa3e.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-animate.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-sanitize.js"></script>
+    <script type='text/javascript' src='//cdnjs.cloudflare.com/ajax/libs/angular-loading-bar/0.9.0/loading-bar.min.js'></script>
+    <script src="/js/json-query.js?t=1518965428392"></script>
+
+</body>
+
+</html>
