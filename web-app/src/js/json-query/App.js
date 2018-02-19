@@ -11,7 +11,8 @@
             'ngDialog',
             "LocalStorageModule",
             'ui.ace',
-            'angularLoad'
+            'angularLoad',
+            'ngclipboard'
         ])
         .config(config)
         .run(run);

@@ -2,9 +2,14 @@
 
 <div class="row">
     <div class="col-md-6">
-        <div class="text-right col-md-12">
-            <i class='fa fa-2x fa-align-justify pointer' title="Format JSON" ng-click="format()"></i>
-            <i class='fa fa-2x fa-code pointer' title="Fetch from internet"></i>
+        <div class="col-md-12">
+            <div class="col-md-8 text-primary">
+                JSON
+            </div>
+            <div class="text-right col-md-4">
+                <i class='fa fa-2x fa-align-justify pointer' title="Format JSON" ng-click="format()"></i>
+                <i class='fa fa-2x fa-code pointer' title="Fetch from internet"></i>
+            </div>
         </div>
         <div class="col-md-12">
             <div ui-ace="{ useWrapMode : true,
@@ -15,18 +20,65 @@
     </div>
     <div class="col-md-6">
         <div class="col-md-12">
-            <div class="col-md-6">
-                <label>Select Library</label>
-                <select ng-model="selectedLibrary" ng-change="loadLibrary()" ng-init=" selectedLibrary = libraries[0]" ng-options="library.name for library in libraries">
-                </select>
+            <div class="col-md-12">
+                <div ng-if="isAddNewLibrary">
+                    <div class="col-md-4">
+                        <div class="control-group">
+                            <label class="control-label">Name</label>
+                            <div class="controls">
+                                <input id="name" name="name" class="form-control" type="text" placeholder="Library name" ng-model="newLibrary.name" class="input-xlarge"
+                                    required>
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="control-group">
+                            <label class="control-label">Url</label>
+                            <div class="controls">
+                                <input id="url" name="url" class="form-control" type="text" placeholder="Url" ng-model="newLibrary.url" class="input-xlarge"
+                                    required>
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="control-group">
+                            <label class="control-label">Documentation Url</label>
+                            <div class="controls">
+                                <input id="docUrl" name="docUrl" class="form-control" type="text" placeholder="Documentation Url" ng-model="newLibrary.documentationUrl" class="input-xlarge"
+                                    required>
+                                <p class="help-block"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-actions">
+                        <button type="submit" class="btn btn-primary" ng-click="addLibrary()">Save</button>
+                        <a href="javascript:void(0)" ng-click="cancel()" class="pointer">Cancel</a>
+                    </div>
+                </div>
             </div>
-            <div class="text-right col-md-6">
-                <i class='fa fa-2x fa-play-circle pointer' title="Run" ng-click="run()"></i>
-                <i class='fa fa-2x fa-save pointer' title="Save locally" ng-click=""></i>
-                <i class='fa fa-2x fa-github pointer' title="Save as gist" ng-click="generateGist()"></i>
+            <div class="col-md-8">
+                <label>Select Library</label>
+                <select ng-model="selectedLibrary" ng-change="loadLibrary()" ng-options="library.name for library in libraries">
+                </select>
+                <a ng-href="{{selectedLibrary.documentationUrl}}" target="_blank">
+                    <i class='fa fa-2x fa-info-circle pointer margin-left-5' title="Info about the library"></i>
+                </a>
+                <i class='fa fa-2x fa-plus-square pointer margin-left-5' title="Add new library" ng-click="add()"></i>
+                <i class='fa fa-2x fa-trash pointer margin-left-5' title="Delete library" ng-click="deleteLibrary()"></i>
+            </div>
+            <div class="text-right col-md-4">
+                <i class='fa fa-2x fa-play-circle pointer margin-left-5' title="Run" ng-click="run()"></i>
+                <i class='fa fa-2x fa-clipboard pointer margin-left-5' title="Copy to clipboard" ngclipboard data-clipboard-target="#rightEditor"></i>
+                <i class='fa fa-2x fa-save pointer margin-left-5' title="Save locally" ng-click="saveLocally()"></i>
+                <i class='fa fa-2x fa-github pointer margin-left-5' title="Save as gist" ng-click="generateGist()"></i>
             </div>
         </div>
         <div class="col-md-12">
+            <div style="position:absolute; top:0; left:-5000px;">
+                <textarea id="rightEditor" type="text" rows="1" cols="1" ng-model="rightEditor" />
+            </div>
             <div ui-ace="{ useWrapMode : true,
             theme:'terminal',
             mode: 'javascript',
