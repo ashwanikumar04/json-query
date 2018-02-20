@@ -56,11 +56,11 @@
             localStorageService.set("libraries", newLibraries);
             return getSupportedLibraries();
         };
-        var saved = function () {
-            return localStorageService.get("savedCode");
+        var savedSnippets = function () {
+            return localStorageService.get("savedSnippets");
         };
         var saveLocally = function (code, url) {
-            var savedCode = saved();
+            var savedCode = savedSnippets();
             if (!savedCode) {
                 savedCode = [];
             }
@@ -69,7 +69,7 @@
                 url: url,
                 timestamp: new Date()
             });
-            localStorageService.set("savedCode", savedCode);
+            localStorageService.set("savedSnippets", savedCode);
         };
 
         var getDefaultObject = function () {
@@ -95,7 +95,8 @@
             addNewLibrary: addNewLibrary,
             deleteLibrary: deleteLibrary,
             saveLocally: saveLocally,
-            fetchData: fetchData
+            fetchData: fetchData,
+            savedSnippets: savedSnippets
         };
     };
     angular.module('jsonQuery.services', [])

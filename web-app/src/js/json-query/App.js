@@ -4,6 +4,7 @@
             'ngSanitize',
             "jsonQuery.controllers.main",
             "jsonQuery.controllers.query",
+            "jsonQuery.controllers.snippet",
             'jsonQuery.services',
             'angular-loading-bar',
             'ngAnimate',
@@ -25,7 +26,7 @@
             showClose: true,
             closeByDocument: true,
             closeByEscape: true,
-            width: "75%",
+            width: "50%",
             height: "40%"
         });
         cfpLoadingBarProvider.includeSpinner = true;

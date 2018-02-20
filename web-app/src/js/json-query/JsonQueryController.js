@@ -100,6 +100,27 @@
                     });
             }
         };
+        $scope.showSavedSnippets = function (item) {
+            if ($scope.currentDialog) {
+                $scope.currentDialog.close();
+            }
+            var savedSnippets = jsonQueryService
+                .savedSnippets();
+            console.log(savedSnippets);
+            $scope.snippets = savedSnippets;
+            $scope.currentDialog = ngDialog.open({
+                template: '/snippets.html',
+                controller: 'SnippetController',
+                scope: $scope
+            });
+        };
+        $scope.select = function (selectedCode) {
+            $scope.rightEditor = selectedCode;
+            if ($scope.currentDialog) {
+                $scope.currentDialog.close();
+            }
+            $scope.run();
+        };
         loadLibrary($scope.selectedLibrary.url);
         $scope.input = formatObject(jsonQueryService.getDefaultObject());
         $interval($scope.run, 5 * 1000);
