@@ -1,6 +1,5 @@
 ﻿(function () {
     function JsonQueryController($scope, $location, $rootScope, $interval, jsonQueryService, Flash, ngDialog, angularLoad) {
-        $rootScope.$emit("onTabChanged", 8);
         $scope.rightEditor = "";
         $scope.libraries = jsonQueryService.getSupportedLibraries();
         $scope.selectedLibrary = $scope.libraries[0];
