@@ -5,6 +5,7 @@
         $scope.libraries = jsonQueryService.getSupportedLibraries();
         $scope.selectedLibrary = $scope.libraries[0];
         $scope.newLibrary = {};
+        $scope.curlRequest = "";
         var loadLibrary = function loadLibrary(url) {
             angularLoad
                 .loadScript(url)
@@ -34,13 +35,42 @@
             $scope.isAddNewLibrary = true;
         };
         $scope.cancel = function () {
+            $scope.newLibrary = {};
             $scope.isAddNewLibrary = false;
         };
+        $scope.enableInternetRequest = function () {
+            $scope.isInternetRequest = true;
+        };
+        $scope.disableInternetRequest = function () {
+            $scope.curlRequest = "";
+            $scope.isInternetRequest = false;
+        };
+        $scope.fetchData = function () {
+            if ($scope.curlRequest && $scope.curlRequest.indexOf('curl') >= 0) {
+                jsonQueryService
+                    .fetchData($scope.curlRequest)
+                    .then(function (response) {
+                        var apiData = response.data.data;
+                        $scope.input = formatObject(JSON.parse(apiData));
+                        $scope.disableInternetRequest();
+                    }).catch(function (err) {
+                        Flash.create('danger', err.data.message, 'custom-class');
+                    });
+
+            } else {
+                Flash.create('danger', "Please enter valid curl request", 'custom-class');
+                return;
+            }
+        };
         $scope.addLibrary = function () {
-            $scope.libraries = jsonQueryService.addNewLibrary($scope.newLibrary);
-            $scope.selectedLibrary = $scope.libraries[0];
-            $scope.isAddNewLibrary = false;
-            $scope.newLibrary = {};
+            var newLibrary = $scope.newLibrary;
+            if (newLibrary.name && newLibrary.url && newLibrary.documentationUrl) {
+                $scope.libraries = jsonQueryService.addNewLibrary($scope.newLibrary);
+                $scope.selectedLibrary = $scope.libraries[0];
+                $scope.close();
+            } else {
+                Flash.create('danger', "Please enter all the entries", 'custom-class');
+            }
         };
         $scope.deleteLibrary = function () {
             $scope.libraries = jsonQueryService.deleteLibrary($scope.selectedLibrary);
@@ -73,6 +103,7 @@
         };
         loadLibrary($scope.selectedLibrary.url);
         $scope.input = formatObject(jsonQueryService.getDefaultObject());
+        $interval($scope.run, 5 * 1000);
     }
 
     angular.module('jsonQuery.controllers.query', [])

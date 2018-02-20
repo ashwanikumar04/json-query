@@ -5,6 +5,10 @@ var routes = function () {
 
     queryRoute.route('/gists')
         .post(queryController.generateGist);
+
+    queryRoute.route('/curl')
+        .post(queryController.fetchData);
+
     return queryRoute;
 };
 

@@ -11,6 +11,11 @@
                 }
             });
         };
+        var fetchData = function (curl) {
+            return $http.post('/api/v1/query/curl', {
+                "curl": curl
+            });
+        };
         var getDefaultLibraries = function () {
             return [{
                     "name": "Lodash",
@@ -89,7 +94,8 @@
             getDefaultObject: getDefaultObject,
             addNewLibrary: addNewLibrary,
             deleteLibrary: deleteLibrary,
-            saveLocally: saveLocally
+            saveLocally: saveLocally,
+            fetchData: fetchData
         };
     };
     angular.module('jsonQuery.services', [])

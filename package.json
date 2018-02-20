@@ -32,6 +32,7 @@
     "nodemailer-smtp-pool": "^2.0.1",
     "request": "^2.79.0",
     "serve-static": "^1.10.0",
+    "shelljs": "^0.8.1",
     "sprintf-js": "^1.0.3",
     "sqlite3": "^3.1.8",
     "streamifier": "^0.1.1",

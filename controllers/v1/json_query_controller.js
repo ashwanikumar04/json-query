@@ -7,6 +7,7 @@ var config = require('../../config');
 var apiConstants = require('../../models/common/api-constants');
 var _ = require("lodash");
 var axios = require('axios');
+var shell = require('shelljs');
 
 var queryController = function () {
     var generateGist = function (req, res) {
@@ -31,8 +32,38 @@ var queryController = function () {
             });
     };
 
+    var fetchData = function (req, res) {
+        curl(req.body.curl)
+            .then(function (response) {
+                return response;
+            })
+            .then(function (data) {
+                return responseMaker
+                    .prepareResponse(null, data, res, {});
+            })
+            .catch(function (err) {
+                return responseMaker
+                    .prepareResponse(err, null, res, {});
+            });
+    };
+
+    function curl(data) {
+        return new Promise(function (resolve, reject) {
+            shell.exec(data, function (code, stdout, stderr) {
+                if (code === 0) {
+                    resolve(stdout);
+                } else {
+                    reject(stderr);
+                }
+            });
+
+        });
+    }
+
+
     return {
-        generateGist: generateGist
+        generateGist: generateGist,
+        fetchData: fetchData
     };
 };
 
