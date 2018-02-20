@@ -1,11 +1,9 @@
 var winston = require('winston');
 var moment = require('moment');
 winston.emitErrs = true;
-var Mail = require('winston-mail').Mail;
 var dateTimeUtil = require("./date-time-util");
 dateTimeUtil.setMoment();
 var CustomError = require("../models/common/errors/custom-error");
-require('winston-loggly');
 var config = require("../config");
 var logger = new winston.Logger({
     transports: [

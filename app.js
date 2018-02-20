@@ -29,8 +29,6 @@ app.use(serveStatic(__dirname + '/public', {
     maxAge: '5d',
     setHeaders: setCustomCacheControl
 }));
-var useragent = require('useragent');
-useragent(true);
 
 function setCustomCacheControl(res, path) {
     if (serveStatic.mime.lookup(path) === 'text/html') {
@@ -43,12 +41,10 @@ app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
     extended: true
 }));
-var listeningPort = process.env.PORT || 8090;
+var listeningPort = process.env.PORT || 9099;
 var responseMaker = require("./utils/response-maker");
 
 var apiRoutes = express.Router();
-//app.set('views', __dirname + '/public');
-app.set('view engine', 'ejs');
 
 app.use(function (err, req, res, next) {
     return responseMaker.prepareResponse(err, null, res);
@@ -66,9 +62,6 @@ apiRoutes.get('/error', function (req, res, next) {
 var queryRoute = require('./routes/v1/json_query_route')();
 
 app.use('/', function (req, res, next) {
-    var agent = useragent.lookup(req.headers['user-agent']);
-    req.userAgent = agent;
-    logger.debug(agent);
     next();
 });
 if (config.debug) {
