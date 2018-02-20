@@ -1,8 +1,12 @@
 {
   "name": "json-query",
   "version": "1.0.0",
-  "description": "Basic api starter for node",
+  "description": "A simple json query tool",
   "main": "app.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashwanikumar04/json-query.git"
+  },
   "dependencies": {
     "axios": "^0.14.0",
     "bluebird": "^3.1.1",
@@ -23,8 +27,16 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
   },
+  "keywords": [
+    "json",
+    "lodash"
+  ],
   "author": "Ashwani Kumar",
-  "license": "ISC",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashwanikumar04/json-query/issues"
+  },
+  "homepage": "https://github.com/ashwanikumar04/json-query#readme",
   "devDependencies": {
     "gulp": "^3.9.1",
     "gulp-cache-bust": "^1.3.0",
@@ -37,8 +49,5 @@
     "gulp-replace": "^0.5.4",
     "gulp-uglify": "^2.1.2",
     "gulp-util": "^3.0.7"
-  },
-  "directories": {
-    "doc": "docs"
   }
 }
