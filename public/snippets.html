@@ -1,0 +1,10 @@
+<div id="previewDiv" style="overflow:auto" class="row panel panel-primary well">
+    <div class="row margin-top-10" ng-repeat="snippet in snippets">
+        <div class="col-md-9 field  ">
+            <textarea ng-model="snippet.code" style="width:100%;min-height:75px"></textarea>
+        </div>
+        <div class="col-md-3 field  ">
+            <a href="javascript:void(0)" ng-click="select(snippet.code)" class="pointer">Select</a>
+        </div>
+    </div>
+</div>
