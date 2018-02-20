@@ -5,6 +5,9 @@
         $scope.selectedLibrary = $scope.libraries[0];
         $scope.newLibrary = {};
         $scope.curlRequest = "";
+        $scope.rightEditor = "_.filter(input,function(language){\
+           \n\t return language.name==='Java'\
+           \n  })";
         var loadLibrary = function loadLibrary(url) {
             angularLoad
                 .loadScript(url)
