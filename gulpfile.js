@@ -8,8 +8,8 @@ var dateTimeUtils = require('./utils/date-time-util');
 dateTimeUtils.setMoment();
 
 var localUrl = "http://localhost/";
-var releaseDomain = "ur.ashwanik.in";
-var releaseUrl = "http://ur.ashwanik.in/";
+var releaseDomain = "jq.ashwanik.in";
+var releaseUrl = "http://jq.ashwanik.in/";
 
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
