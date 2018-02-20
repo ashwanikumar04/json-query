@@ -26,7 +26,7 @@
             showClose: true,
             closeByDocument: true,
             closeByEscape: true,
-            width: "50%",
+            width: "40%",
             height: "40%"
         });
         cfpLoadingBarProvider.includeSpinner = true;

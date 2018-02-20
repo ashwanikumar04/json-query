@@ -1,10 +1,15 @@
 <div id="previewDiv" style="overflow:auto" class="row panel panel-primary well">
+    <div class="row text-center">
+        <h2> Snippets</h2>
+    </div>
     <div class="row margin-top-10" ng-repeat="snippet in snippets">
         <div class="col-md-9 field  ">
             <textarea ng-model="snippet.code" style="width:100%;min-height:75px"></textarea>
         </div>
         <div class="col-md-3 field  ">
-            <a href="javascript:void(0)" ng-click="select(snippet.code)" class="pointer">Select</a>
+            <a ng-href="{{snippet.url}}" target="_blank" class="pointer">Gist</a>
+            <i class='fa fa-2x fa-paste pointer margin-left-5' title="Select" ng-click="select(snippet)"></i>
+            <i class='fa fa-2x fa-trash pointer margin-left-5' title="Delete" ng-click="deleteSnippet(snippet)"></i>
         </div>
     </div>
 </div>

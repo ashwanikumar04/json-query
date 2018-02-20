@@ -65,6 +65,7 @@
                 savedCode = [];
             }
             savedCode.push({
+                id: Number(new Date()),
                 code: code,
                 url: url,
                 timestamp: new Date()
@@ -88,6 +89,13 @@
             ];
         };
 
+        var deleteSnippet = function (snippet) {
+            var savedCode = savedSnippets();
+            var filtered = savedCode.filter(function (code) {
+                return code.id !== snippet.id;
+            });
+            localStorageService.set("savedSnippets", filtered);
+        };
         return {
             generateGist: generateGist,
             getSupportedLibraries: getSupportedLibraries,
@@ -96,7 +104,8 @@
             deleteLibrary: deleteLibrary,
             saveLocally: saveLocally,
             fetchData: fetchData,
-            savedSnippets: savedSnippets
+            savedSnippets: savedSnippets,
+            deleteSnippet: deleteSnippet
         };
     };
     angular.module('jsonQuery.services', [])

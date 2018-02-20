@@ -100,14 +100,16 @@
                     });
             }
         };
+        var updateSnippets = function () {
+            var savedSnippets = jsonQueryService
+                .savedSnippets();
+            $scope.snippets = savedSnippets;
+        }
         $scope.showSavedSnippets = function (item) {
             if ($scope.currentDialog) {
                 $scope.currentDialog.close();
             }
-            var savedSnippets = jsonQueryService
-                .savedSnippets();
-            console.log(savedSnippets);
-            $scope.snippets = savedSnippets;
+            updateSnippets();
             $scope.currentDialog = ngDialog.open({
                 template: '/snippets.html',
                 controller: 'SnippetController',
@@ -115,11 +117,15 @@
             });
         };
         $scope.select = function (selectedCode) {
-            $scope.rightEditor = selectedCode;
+            $scope.rightEditor = selectedCode.code;
             if ($scope.currentDialog) {
                 $scope.currentDialog.close();
             }
             $scope.run();
+        };
+        $scope.deleteSnippet = function (selectedCode) {
+            jsonQueryService.deleteSnippet(selectedCode);
+            updateSnippets();
         };
         loadLibrary($scope.selectedLibrary.url);
         $scope.input = formatObject(jsonQueryService.getDefaultObject());
