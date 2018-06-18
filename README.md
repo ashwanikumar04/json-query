@@ -58,4 +58,4 @@ gulp web
 
 
 # Credits:
-The UI is motivated by [this](www.jsonquerytool.com/)
+The UI is motivated by [this](http://www.jsonquerytool.com/)
